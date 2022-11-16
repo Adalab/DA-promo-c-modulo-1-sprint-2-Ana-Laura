@@ -24,10 +24,20 @@ FROM orders
 GROUP BY MONTH, YEAR;
 
 # 5. Seleccionad las ciudades con 4 o más empleadas:
-SELECT DISTINCT city
+SELECT DISTINCT city, COUNT(employee_id)
 FROM employees
-WHERE COUNT(employee_id) >= 4
-GROUP BY city;
+GROUP BY city
+HAVING COUNT(*) >= 4;
+
+# 6. CREAD UNA NUEVA COLUMNA BASÁNDONOS EN LA CANTIDAD MONETARIA:
+SELECT
+CASE
+WHEN unit_price > 20 THEN "Bajo"
+ELSE "Alto"
+END AS RangoPedidos, order_id
+FROM order_details;
+
+
 
 
 
