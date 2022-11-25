@@ -39,16 +39,10 @@ FROM products
 
 -- Con subconsulta
 
-SELECT product_name AS 'Productos_mas_caros', unit_price AS 'precio_unidad'
+SELECT product_name AS 'Productos_mas_caros', unit_price AS precio_unidad
 FROM products 
-WHERE `unit_price` > ANY (SELECT unit_price FROM products )
+WHERE unit_price > ANY (SELECT unit_price FROM products )
 	ORDER BY unit_price DESC
 	LIMIT 10;
 
 # BONUS: Qué producto es más popular
-
-
-
-
-
-
